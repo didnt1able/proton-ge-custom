@@ -3,16 +3,16 @@
     cd gst-plugins-base
     git reset --hard HEAD
     git clean -xdf
-#    echo "add Guy's patch for gstreamer preroll buffer for media converter"
-#    patch -Np1 < ../patches/gstreamer/mediaconvert-gstdecodebin2.patch
+    echo "add Guy's patch for gstreamer preroll buffer for media converter"
+    patch -Np1 < ../patches/gstreamer/mediaconvert-gstdecodebin2.patch
     cd ..
 
     cd gst-plugins-ugly
     git reset --hard HEAD
     git clean -xdf
-#    echo "add Guy's patch to fix wmv playback in gst-plugins-ugly"
-#    patch -Np1 < ../patches/gstreamer/asfdemux-Re-initialize_demux-adapter_in_gst_asf_demux_reset.patch
-#    patch -Np1 < ../patches/gstreamer/asfdemux-gst_asf_demux_reset_GST_FORMAT_TIME_fix.patch
+    echo "add Guy's patch to fix wmv playback in gst-plugins-ugly"
+    patch -Np1 < ../patches/gstreamer/asfdemux-Re-initialize_demux-adapter_in_gst_asf_demux_reset.patch
+    patch -Np1 < ../patches/gstreamer/asfdemux-gst_asf_demux_reset_GST_FORMAT_TIME_fix.patch
     cd ..
 
     cd lsteamclient
@@ -68,6 +68,7 @@
     git revert --no-commit e4fbae832c868e9fcf5a91c58255fe3f4ea1cb30
 
     # these break sea of thieves
+    echo "sea of thieves reverts"
     git revert --no-commit ed06d64bf41cc3eb6258a3576e845a544855b0be
     git revert --no-commit a114ce67db2357740eb58fbda0102e582e79c11c
     git revert --no-commit f93284dfa44b060436c6a0617b51280abb3f24fc
@@ -76,6 +77,7 @@
     echo "proton steamhelper reverts"
     git revert --no-commit 4f787812999b3b26f04b322fa0d78724596878c0
     git revert --no-commit 4a1bd593f39b0852ca8fccbf0e54f7c00b3783ec
+    # note: don't reverse this one, it had to be modified by hand
     patch -Np1 < ../patches/wine-hotfixes/revert-0c19e2e487d36a89531daf4897c0b6390d82a843.patch
 
     # disable these when using proton's gamepad patches
